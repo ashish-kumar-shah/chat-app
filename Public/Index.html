@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Application</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom styles for better appearance */
+    .chat-container {
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .chat-header {
+      background-color: #f7f7f7;
+      border-bottom: 1px solid #ddd;
+      padding: 1rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .message-input {
+      border-top: 1px solid #ddd;
+      padding: 0.5rem;
+      background-color: #f7f7f7;
+    }
+    .message-list {
+      padding: 1rem;
+      max-height: 60vh;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <div class="w-full max-w-3xl h-5/6 flex flex-col bg-white chat-container">
+    <div class="chat-header flex items-center justify-between">
+      <div>Chat Room</div>
+      <select id="recipient" class="pl-2 border border-gray-300 rounded-md h-full w-1/4 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <option value="" disabled selected>Select User</option>
+      </select>
+      <div class="text-sm text-gray-500">Welcome, <span id="name"></span></div>
+    </div>
+
+    <div class="message-list overflow-auto h-screen" id="messages">
+      <!-- Messages will be appended here -->
+    </div>
+
+    <div class="message-input flex items-center p-2">
+      <form id="form" class="w-full flex">
+      
+        <input type="text" id="inp" class="text-justify bg-gray-100 border-none shadow pl-2 border border-gray-300 rounded-md h-10 w-full bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type something" />
+        <button type="submit" id="btn" class="ml-2 w-20 border-none shadow bg-blue-500 h-10 text-white rounded-md hover:bg-blue-600 transition-colors">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script> <!-- Link to the external JS file -->
+</body>
+</html>
